@@ -22,5 +22,3 @@ seen_proposals.db
 # Python virtual environment folders
 venv/
 env/
-
-.replit

@@ -1,0 +1,2 @@
+run = "python3 -u main.py"
+language = "python"
