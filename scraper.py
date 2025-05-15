@@ -1,10 +1,7 @@
 import os
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 import requests
 import time
 import sqlite3
@@ -53,13 +50,17 @@ def send_telegram_message(token, chat_id, message):
 
 
 def fetch_and_send_proposals():
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
+    options = uc.ChromeOptions()
+    options.headless = True
     options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
 
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
+    if os.environ.get("REPL_ID"):  # Running on Replit
+        driver = uc.Chrome(options=options)
+        print("We are on replit")
+    else:  # Local machine
+        driver = uc.Chrome(version_main=135, options=options)
+        print("We are on local")
 
     conn = init_db()
     cursor = conn.cursor()

@@ -3,3 +3,4 @@ selenium
 requests
 python-dotenv
 webdriver-manager
+undetected-chromedriver
