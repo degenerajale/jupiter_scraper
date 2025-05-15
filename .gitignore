@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite database file
+seen_proposals.db
+
+# Environment variables file
+.env
+
+# VSCode or other editor configs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store
+
+# Python virtual environment folders
+venv/
+env/
